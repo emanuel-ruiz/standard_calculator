@@ -8,8 +8,13 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 public:
     explicit MainWindow(QWidget *parent = nullptr);
+private:
 
 signals:
+
+    // QWidget interface
+public:
+    QSize sizeHint() const override;
 };
 
 #endif // MAINWINDOW_H
