@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "standard_calculator_widget.h"
 
 class MainWindow : public QMainWindow
 {
@@ -14,6 +15,7 @@ private:
     void setActions();
     void setUI();
 
+    standard_calculator_widget *sc;
     QAction *quitAction;
     QMenu *fileMenu;
 signals:

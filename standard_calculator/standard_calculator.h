@@ -2,6 +2,8 @@
 #define STANDARD_CALCULATOR_H
 
 #include <QObject>
+#include <QDebug>
+
 
 /*Standard Calculator that will implement
 * Addition
@@ -30,7 +32,7 @@ public:
     template<typename T>
     T division(const T &a, const T &b);
 
-    template<typename T>
+    template<typename T, int N>
     T exponential(const T &a, const int &p);
 
     template<typename T>
@@ -40,7 +42,7 @@ public:
 
     int modulus(const int &a, const int &b);
 
-    int gcd(const int &a, const int &b);
+    int gcd(const int a, const int b);
 
 private:
 
