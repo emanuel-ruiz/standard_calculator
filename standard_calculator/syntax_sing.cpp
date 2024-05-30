@@ -36,6 +36,18 @@ bool Syntax_Sing::par_syntax(const QString &eq)
 
 double Syntax_Sing::calulate_total(const QString &eq)
 {
+    QQueue<QChar> operators;
+    QQueue<QChar> values;
+
+    double total = 0;
+    double temp = 0;
+    QString current = "";
+    //iterate through list
+    //QChar has isDigit
+    //QString has toDouble(&ok) ok is bool
+    for(QString::const_iterator it = eq.cbegin(); it != eq.cend(); it++){
+        QChar ch = *it;
+    }
     return 0;
 }
 
