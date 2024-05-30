@@ -1,10 +1,14 @@
 #include <QApplication>
 #include "mainwindow.h"
+#include "standard_widget.h"
 #include <QMenuBar>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow{parent}
 {
+
     this->setUI();
+    sc = new Standard_Widget(this);
+    this->setCentralWidget(this->sc);
 }
 
 MainWindow::~MainWindow()
