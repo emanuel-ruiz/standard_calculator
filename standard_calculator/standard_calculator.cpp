@@ -40,20 +40,22 @@ int Standard_Calculator::gcd(const int f, const int s)
     int a = (f>s) ? f: s;
     int b = (s<f) ? s: f;
 
-    int r = -1;
-    int q = 0;
-    while(r > b){
-        q = a/b;
-        r = a%b;
-        if(r == 0){
-            qInfo() << b;
-            return b;
-        }
-        a = b;
-        b = (a-r)/q;
+    int r = a%b;
+    if(r == 0){
+        return b;
     }
-    return NULL;
-
+    int q = a/b;
+    qInfo() << a << "-" << b << "-" << r;
+    while(q != 0 && r !=0){
+        a = b;
+        b = r;
+        r = a%b;
+        q = a/b;
+    }
+    if(r != 0){
+        return 1;
+    }
+    return b;
 }
 
 template<typename T>

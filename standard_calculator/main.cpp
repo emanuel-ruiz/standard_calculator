@@ -7,9 +7,10 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     MainWindow w;
-    Standard_Calculator *cal = new Standard_Calculator(&w);
-    qInfo() << cal->gcd(10, 5);
+
     w.setWindowTitle("Standard Calculator");
     w.show();
+    Standard_Calculator *cal = new Standard_Calculator(&w);
+    qInfo() << cal->gcd(189,294 );
     return a.exec();
 }
