@@ -8,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     this->setUI();
     sc = new Standard_Widget(this);
+    sc->setMinimumSize(300,480);
     this->setCentralWidget(this->sc);
 }
 
@@ -19,7 +20,7 @@ MainWindow::~MainWindow()
 //Implementing Virtual Function to set default window size.
 QSize MainWindow::sizeHint() const
 {
-    return QSize(600, 700);
+    return QSize(500, 600);
 }
 
 void MainWindow::setActions()

@@ -6,6 +6,8 @@ Standard_Widget::Standard_Widget(QWidget *parent)
     , ui(new Ui::Standard_Widget)
 {
     ui->setupUi(this);
+    ui->edit_numbers->setAlignment(Qt::AlignRight);
+
 }
 
 Standard_Widget::~Standard_Widget()
