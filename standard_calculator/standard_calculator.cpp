@@ -27,25 +27,36 @@ int Standard_Calculator::modulus(const int &a, const int &b)
         return a%b;
     }
 }
+// slash with two starting asteriks denotes Doxygen comment block
+/**
+    @brief Calculate the greatest common divisor of two integers.
+    @param f First Integer.
+    @param b Second Integer.
+    @return The GCD of the two integers
 
+    @note Negative numbers with be converted to positive.
+*/
 int Standard_Calculator::gcd(const int f, const int s)
 {
-    //Eucledian Algorithm
-    //a = bq + r
+
     if(f ==0 && s != 0) return s;
     if(s == 0 && f !=0) return f;
-    if(f == 0 && s==0) return NULL;
+    if(f == 0 && s==0) return 0;
+
 
 
     int a = (f>s) ? f: s;
     int b = (s<f) ? s: f;
 
+    a = std::abs(a);
+    b = std::abs(b);
     int r = a%b;
     if(r == 0){
         return b;
     }
     int q = a/b;
     qInfo() << a << "-" << b << "-" << r;
+    //Euclidean Algorithm
     while(q != 0 && r !=0){
         a = b;
         b = r;
