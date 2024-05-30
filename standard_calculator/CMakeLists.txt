@@ -21,6 +21,8 @@ set(PROJECT_SOURCES
         standard_widget.ui
         standard_calculator.h
         standard_calculator.cpp
+        syntax_sing.h
+        syntax_sing.cpp
 
 )
 
@@ -32,6 +34,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
 
         standard_calculator.h standard_calculator.cpp
         standard_widget.h standard_widget.cpp standard_widget.ui
+        syntax_sing.h syntax_sing.cpp
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET standard_calculator APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

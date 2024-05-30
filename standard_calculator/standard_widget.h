@@ -17,6 +17,8 @@ public:
 
 private:
     Ui::Standard_Widget *ui;
+private slots:
+    void calculate_equation(QString equation);
 };
 
 #endif // STANDARD_WIDGET_H
