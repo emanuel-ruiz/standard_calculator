@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
 
     w.setWindowTitle("Standard Calculator");
     w.show();
-    Standard_Calculator *cal = new Standard_Calculator(&w);
-    qInfo() << cal->gcd(878, 12);
+    // Standard_Calculator *cal = new Standard_Calculator(&w);
+    qInfo() << Syntax_Sing::get_instance().par_syntax("(((5)6)87(+(-)");
     return a.exec();
 }

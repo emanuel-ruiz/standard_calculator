@@ -14,3 +14,8 @@ Standard_Widget::~Standard_Widget()
 {
     delete ui;
 }
+
+void Standard_Widget::calculate_equation(QString equation)
+{
+
+}

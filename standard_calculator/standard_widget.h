@@ -1,6 +1,7 @@
 #ifndef STANDARD_WIDGET_H
 #define STANDARD_WIDGET_H
 
+#include "syntax_sing.h"
 #include <QWidget>
 
 namespace Ui {

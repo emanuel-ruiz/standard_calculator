@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "standard_widget.h"
+#include "syntax_sing.h"
 
 class MainWindow : public QMainWindow
 {

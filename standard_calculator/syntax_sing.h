@@ -7,9 +7,9 @@ class Syntax_Sing
 
 public:
     static Syntax_Sing& get_instance();
-    bool par_syntax(QString &eq);
+    bool par_syntax(const QString &eq);
 
-    double calulate_total(QString &eq);
+    double calulate_total(const QString &eq);
 
     //Delete cpy constructor and assignment operator
     Syntax_Sing(const Syntax_Sing&) = delete;
