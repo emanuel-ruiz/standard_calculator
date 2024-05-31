@@ -1,6 +1,7 @@
 #ifndef SYNTAX_SING_H
 #define SYNTAX_SING_H
 #include <QString>
+#include "standard_calculator.h"
 
 class Syntax_Sing
 {
@@ -9,7 +10,8 @@ public:
     static Syntax_Sing& get_instance();
     bool par_syntax(const QString &eq);
 
-    double calulate_total(const QString &eq);
+    double calulate_total(const QString &eq, Standard_Calculator &cal);
+    double _calculate(QQueue<QChar>& operators, QQueue<int>& values);
 
     //Delete cpy constructor and assignment operator
     Syntax_Sing(const Syntax_Sing&) = delete;
