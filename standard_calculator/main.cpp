@@ -1,6 +1,7 @@
 #include <QApplication>
 #include "mainwindow.h"
 #include "standard_calculator.h"
+#include "syntax_sing.h"
 
 
 int main(int argc, char *argv[])
@@ -10,7 +11,9 @@ int main(int argc, char *argv[])
 
     w.setWindowTitle("Standard Calculator");
     w.show();
+    Standard_Calculator cal;
     // Standard_Calculator *cal = new Standard_Calculator(&w);
-    qInfo() << Syntax_Sing::get_instance().par_syntax("(((5)6)87(+(-)");
+    int answer = Syntax_Sing::get_instance().calulate_total("4+4", cal);
+    qInfo() << answer;
     return a.exec();
 }

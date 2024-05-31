@@ -11,7 +11,7 @@ public:
     bool par_syntax(const QString &eq);
 
     double calulate_total(const QString &eq, Standard_Calculator &cal);
-    double _calculate(QQueue<QChar>& operators, QQueue<int>& values);
+    void _calculate(QQueue<QChar>& operators, QQueue<int>& values, Standard_Calculator &cal);
 
     //Delete cpy constructor and assignment operator
     Syntax_Sing(const Syntax_Sing&) = delete;
