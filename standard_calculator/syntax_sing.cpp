@@ -8,7 +8,6 @@
 Syntax_Sing &Syntax_Sing::get_instance()
 {
     static Syntax_Sing instance;
-
     return instance;
 }
 
@@ -18,7 +17,9 @@ Syntax_Sing &Syntax_Sing::get_instance()
 bool Syntax_Sing::par_syntax(const QString &eq)
 {
     QStack<QChar> syntax;
+    QChar previous;
     for(QChar ch: eq){
+
         if(ch == '('){
             syntax.push(ch);
         }
@@ -26,8 +27,18 @@ bool Syntax_Sing::par_syntax(const QString &eq)
             if(syntax.isEmpty()){
                 return false;
             }
+            if(previous == '+' || previous == '-' || previous == '*' || previous =='/' || previous == '^' || previous == '%'){
+                return false;
+            }
             syntax.pop();
         }
+        else if(ch == '+' || ch == '-' || ch == '*' || ch =='/' || ch == '^' || ch == '%'){
+            if(previous == '('){
+                return false;
+            }
+
+        }
+        previous = ch;
     }
     if(syntax.isEmpty()){
         return true;
@@ -52,50 +63,41 @@ double Syntax_Sing::calulate_total(const QString &eq, Standard_Calculator &cal)
     //QString has toDouble(&ok) ok is bool
     for(QString::const_iterator it = eq.cbegin(); it != eq.cend(); it++){
         QChar ch = *it;
-
-
         if(ch.isDigit()){
-
             current.append(ch);
             qInfo() << current;
-
         }else{
             //if ch is anything besides a digit, then the running value is complete
             if(!current.isEmpty()){
-
                 values.append(current.toInt());
-
                 current.clear();
             }
             if(ch == ' '){
                 continue;
             }
             if(ch != ' ' && ch != '(' && ch != ')'){
-
                 operators.append(ch);
             }
             if(ch == ')'){
-                qInfo()<< "Here";
                 if(!operators.isEmpty()){
                     this->_calculate(operators, values, cal);
                 }
             }
-
         }
     }
+    //Equation ends with a digit
     if(!current.isEmpty()){
-        qInfo()<< "Over Here";
         values.append(current.toInt());
         current.clear();
     }
 
+    //Equation does not end with a closing paranthesis
     if(!operators.isEmpty()){
 
         qInfo()<< values;
         qInfo() << operators;
         this->_calculate(operators, values, cal);
     }
-
     return values.dequeue();
 }
 //GCD and Factorial will be calculated seperately

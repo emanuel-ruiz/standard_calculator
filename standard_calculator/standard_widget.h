@@ -26,6 +26,7 @@ private:
 private slots:
     void calculate_equation();
     void input_slot();
+    void science_input_slot();
 };
 
 #endif // STANDARD_WIDGET_H

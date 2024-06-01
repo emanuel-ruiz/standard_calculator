@@ -19,18 +19,22 @@ Standard_Widget::Standard_Widget(QWidget *parent)
     connect(ui->button_7, &QPushButton::clicked,this,&Standard_Widget::input_slot);
     connect(ui->button_8, &QPushButton::clicked,this,&Standard_Widget::input_slot);
     connect(ui->button_9, &QPushButton::clicked,this,&Standard_Widget::input_slot);
+
     connect(ui->button_plus, &QPushButton::clicked,this,&Standard_Widget::input_slot);
     connect(ui->button_minus, &QPushButton::clicked,this,&Standard_Widget::input_slot);
     connect(ui->button_div, &QPushButton::clicked,this,&Standard_Widget::input_slot);
-    connect(ui->button_factorial, &QPushButton::clicked,this,&Standard_Widget::input_slot);
-    connect(ui->button_gcd, &QPushButton::clicked,this,&Standard_Widget::input_slot);
     connect(ui->button_sign, &QPushButton::clicked,this,&Standard_Widget::input_slot);
-    connect(ui->button_sqrt, &QPushButton::clicked,this,&Standard_Widget::input_slot);
     connect(ui->button_mult, &QPushButton::clicked,this,&Standard_Widget::input_slot);
-    connect(ui->button_clear, &QPushButton::clicked,this,&Standard_Widget::input_slot);
-    connect(ui->button_clearA, &QPushButton::clicked,this,&Standard_Widget::input_slot);
     connect(ui->button_exp, &QPushButton::clicked,this,&Standard_Widget::input_slot);
     connect(ui->button_equal, &QPushButton::clicked,this,&Standard_Widget::input_slot);
+    connect(ui->button_clear, &QPushButton::clicked,this,&Standard_Widget::input_slot);
+    connect(ui->button_clearA, &QPushButton::clicked,this,&Standard_Widget::input_slot);
+
+
+    connect(ui->button_mod, &QPushButton::clicked, this, &Standard_Widget::science_input_slot);
+    connect(ui->button_sqrt, &QPushButton::clicked,this,&Standard_Widget::science_input_slot);
+    connect(ui->button_gcd, &QPushButton::clicked,this,&Standard_Widget::science_input_slot);
+    connect(ui->button_factorial, &QPushButton::clicked,this,&Standard_Widget::science_input_slot);
 
 
 }
@@ -46,8 +50,7 @@ void Standard_Widget::calculate_equation()
 }
 
 /**
-    @brief Dependent on sender object
-    @brief Will add to the String Equation or calculate Equation.
+    @brief Dependent on sender object will add to the String Equation or calculate Equation.
 
 */
 void Standard_Widget::input_slot()
@@ -58,7 +61,6 @@ void Standard_Widget::input_slot()
 
         QString temp = ui->edit_numbers->toPlainText();
         if(button->text() == "0"){
-
             temp.append('0');
             ui->edit_numbers->setText(temp);
         }else if(button->text()== "1"){
@@ -103,7 +105,38 @@ void Standard_Widget::input_slot()
         }else if(button->text()== "X^Y"){
             temp.append('^');
             ui->edit_numbers->setText(temp);
-        }else if(button->text()== "√"){
+        }else if(button->text()== "C"){
+            ui->edit_numbers->setText("");
+
+        }else if(button->text()== "CE"){
+
+        }else{
+            //equal was pressed
+            //verify equation
+            //calculate total
+            //display total
+            if(Syntax_Sing::get_instance().par_syntax(temp)){
+                int total = Syntax_Sing::get_instance().calulate_total(temp, *cal);
+                ui->edit_numbers->setText(QString::number(total));
+            }else{
+                ui->edit_numbers->setText("Syntax Error");
+            }
+        }
+
+        ui->edit_numbers->setAlignment(Qt::AlignRight);
+    }
+
+
+}
+
+void Standard_Widget::science_input_slot()
+{
+    QPushButton *button = qobject_cast<QPushButton*>(sender());
+    if(button){
+        QString temp = ui->edit_numbers->toPlainText();
+        if(button->text()== "√"){
+            //create function for this
+
             temp.append('s');
             ui->edit_numbers->setText(temp);
         }else if(button->text()== "X!"){
@@ -119,21 +152,6 @@ void Standard_Widget::input_slot()
         }else if(button->text()== "GCD"){
             temp.append('g');
             ui->edit_numbers->setText(temp);
-        }else if(button->text()== "C"){
-            ui->edit_numbers->setText("");
-
-        }else if(button->text()== "CE"){
-
-        }else{
-            //equal was pressed
-            //calculate total
-            //display total
-
-            int total = Syntax_Sing::get_instance().calulate_total(temp, *cal);
-            ui->edit_numbers->setText(QString::number(total));
         }
-        ui->edit_numbers->setAlignment(Qt::AlignRight);
     }
-
-
 }

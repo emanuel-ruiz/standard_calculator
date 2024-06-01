@@ -35,9 +35,6 @@ public:
         return a *b;
     }
 
-    // int multiplication(const int &a, const int &b){
-    //     return a *b;
-    // }
     template<typename T>
     T division(const T &a, const T &b)
     {
@@ -63,11 +60,6 @@ public:
         return c;
     }
 
-
-    // template<typename T, int N>
-    // T exponential(const T &a, const int &p);
-
-    // int exponential(const int &a, const int &b );
     template<typename T>
     T squareRoot(const T &a)
     {
@@ -138,27 +130,6 @@ public:
         }
         return b;
     }
-
-    // template<typename T>
-    // T Standard_Calculator::addition(const T &a, const T &b)
-    // {
-    //     return a + b;
-    // }
-
-    // template<typename T>
-    // T Standard_Calculator::subtraction(const T &a, const T &b)
-    // {
-    //     return a - b;
-    // }
-
-    // // template<typename T>
-    // // T squareRoot(const T &a);
-
-    // int factorial(const int &a);
-
-    // int modulus(const int &a, const int &b);
-
-    // int gcd(const int a, const int b);
 
 private:
 
