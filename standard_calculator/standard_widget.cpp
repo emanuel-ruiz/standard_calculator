@@ -45,6 +45,11 @@ void Standard_Widget::calculate_equation()
 
 }
 
+/**
+    @brief Dependent on sender object
+    @brief Will add to the String Equation or calculate Equation.
+
+*/
 void Standard_Widget::input_slot()
 {
 
@@ -92,6 +97,9 @@ void Standard_Widget::input_slot()
         }else if(button->text()== "*"){
             temp.append('*');
             ui->edit_numbers->setText(temp);
+        }else if(button->text()== "÷"){
+            temp.append('/');
+            ui->edit_numbers->setText(temp);
         }else if(button->text()== "X^Y"){
             temp.append('^');
             ui->edit_numbers->setText(temp);
@@ -99,24 +107,30 @@ void Standard_Widget::input_slot()
             temp.append('s');
             ui->edit_numbers->setText(temp);
         }else if(button->text()== "X!"){
+            //Create slot or helper that will calculate the factorial
+            //check syntax, only integer values
             temp.append('!');
             ui->edit_numbers->setText(temp);
         }else if(button->text()== "MOD"){
+            //check syntax, only integer values
+
             temp.append('%');
-            ui->edit_numbers->setText(temp);
-        }else if(button->text()== "÷"){
-            temp.append('/');
             ui->edit_numbers->setText(temp);
         }else if(button->text()== "GCD"){
             temp.append('g');
             ui->edit_numbers->setText(temp);
         }else if(button->text()== "C"){
-
+            ui->edit_numbers->setText("");
 
         }else if(button->text()== "CE"){
 
         }else{
+            //equal was pressed
+            //calculate total
+            //display total
 
+            int total = Syntax_Sing::get_instance().calulate_total(temp, *cal);
+            ui->edit_numbers->setText(QString::number(total));
         }
         ui->edit_numbers->setAlignment(Qt::AlignRight);
     }
