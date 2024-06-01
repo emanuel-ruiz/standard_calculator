@@ -51,6 +51,7 @@ double Syntax_Sing::calulate_total(const QString &eq, Standard_Calculator &cal)
         if(ch.isDigit()){
 
             current.append(ch);
+            qInfo() << current;
 
         }else{
             //if ch is anything besides a digit, then the running value is complete
@@ -68,6 +69,7 @@ double Syntax_Sing::calulate_total(const QString &eq, Standard_Calculator &cal)
                 operators.append(ch);
             }
             if(ch == ')'){
+                qInfo()<< "Here";
                 if(!operators.isEmpty()){
                     this->_calculate(operators, values, cal);
                 }
@@ -76,13 +78,15 @@ double Syntax_Sing::calulate_total(const QString &eq, Standard_Calculator &cal)
         }
     }
     if(!current.isEmpty()){
+        qInfo()<< "Over Here";
         values.append(current.toInt());
         current.clear();
     }
 
     if(!operators.isEmpty()){
 
-
+        qInfo()<< values;
+        qInfo() << operators;
         this->_calculate(operators, values, cal);
     }
 
@@ -95,37 +99,40 @@ void Syntax_Sing::_calculate(QQueue<QChar>& operators, QQueue<int>& values, Stan
     //TODO FIND A Way to get out of loop
     int head = 0;
     int next = 0;
+    QChar op;
     //we do a for loop with the length of the operators
     int length = operators.size();
 
     for(int i = 0; i < length; i++){
 
-        QChar op = operators.dequeue();
-        int next = values.isEmpty() ? 0 : values.head();
+        op = operators.dequeue();
+        head = values.dequeue();
+        next = values.head();
 
         if(op == '*'){
-            head = values.dequeue();
+
 
             values.head() = cal.multiplication(head, next);
         }
         else if(op == '/'){
-            head = values.dequeue();
+            ;
 
             values.head() = cal.division(head, next);
         }
         else if(op == '^'){
-            head = values.dequeue();
+
 
             values.head() = cal.exponential(head, next);
         }
         else{
-            head = values.dequeue();
             values.enqueue(head);
 
             operators.enqueue(op);
         }
+        qInfo() << values;
+        qInfo() << operators;
     }
-    qInfo() << values.head();
+    qInfo() << "------------------------------";
     while(!operators.isEmpty()){
 
         QChar op = operators.dequeue();
@@ -137,6 +144,8 @@ void Syntax_Sing::_calculate(QQueue<QChar>& operators, QQueue<int>& values, Stan
         else{
             values.head() = cal.subtraction(head, next);
         }
+        qInfo() << values;
+        qInfo() << operators;
     }
 
 
