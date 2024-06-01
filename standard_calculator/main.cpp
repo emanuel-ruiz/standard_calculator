@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
     w.show();
     Standard_Calculator cal;
     // Standard_Calculator *cal = new Standard_Calculator(&w);
-    int answer = Syntax_Sing::get_instance().calulate_total("4+4", cal);
+    int answer = Syntax_Sing::get_instance().calulate_total("(4+4*2)", cal);
     qInfo() << answer;
     return a.exec();
 }
