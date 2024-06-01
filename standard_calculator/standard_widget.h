@@ -2,6 +2,7 @@
 #define STANDARD_WIDGET_H
 
 #include "syntax_sing.h"
+#include "standard_calculator.h"
 #include <QWidget>
 
 namespace Ui {
@@ -18,6 +19,8 @@ public:
 
 private:
     Ui::Standard_Widget *ui;
+    Standard_Calculator *cal;
+
 private slots:
     void calculate_equation(QString equation);
 };
