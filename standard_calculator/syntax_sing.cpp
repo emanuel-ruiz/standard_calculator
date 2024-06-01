@@ -110,23 +110,16 @@ void Syntax_Sing::_calculate(QQueue<QChar>& operators, QQueue<int>& values, Stan
         next = values.head();
 
         if(op == '*'){
-
-
             values.head() = cal.multiplication(head, next);
         }
         else if(op == '/'){
-            ;
-
             values.head() = cal.division(head, next);
         }
         else if(op == '^'){
-
-
             values.head() = cal.exponential(head, next);
         }
         else{
             values.enqueue(head);
-
             operators.enqueue(op);
         }
         qInfo() << values;
@@ -142,7 +135,10 @@ void Syntax_Sing::_calculate(QQueue<QChar>& operators, QQueue<int>& values, Stan
             values.head() = cal.addition(head,next);
         }
         else{
-            values.head() = cal.subtraction(head, next);
+            if(head > next){
+                values.head() = cal.subtraction(head, next);
+            }
+            values.head() = cal.subtraction(next, head);
         }
         qInfo() << values;
         qInfo() << operators;

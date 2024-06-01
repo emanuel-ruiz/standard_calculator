@@ -57,7 +57,7 @@ public:
             return 1;
         }
         int c = a;
-        for(int i = 0; i < b; i++ ){
+        for(int i = 0; i < b-1; i++ ){
             c = c*a;
         }
         return c;
