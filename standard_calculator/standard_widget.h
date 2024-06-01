@@ -20,9 +20,12 @@ public:
 private:
     Ui::Standard_Widget *ui;
     Standard_Calculator *cal;
+    QString equation="";
+    QString tempString = "";
 
 private slots:
-    void calculate_equation(QString equation);
+    void calculate_equation();
+    void input_slot();
 };
 
 #endif // STANDARD_WIDGET_H
