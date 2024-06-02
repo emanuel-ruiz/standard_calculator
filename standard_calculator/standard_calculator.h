@@ -60,8 +60,8 @@ public:
         return c;
     }
 
-    template<typename T>
-    T squareRoot(const T &a)
+
+    double squareRoot(const double &a)
     {
         if(a < 0 ){
             return NULL;

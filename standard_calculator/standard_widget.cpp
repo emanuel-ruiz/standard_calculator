@@ -19,6 +19,7 @@ Standard_Widget::Standard_Widget(QWidget *parent)
     connect(ui->button_7, &QPushButton::clicked,this,&Standard_Widget::input_slot);
     connect(ui->button_8, &QPushButton::clicked,this,&Standard_Widget::input_slot);
     connect(ui->button_9, &QPushButton::clicked,this,&Standard_Widget::input_slot);
+    connect(ui->button_period, &QPushButton::clicked,this,&Standard_Widget::input_slot);
 
     connect(ui->button_plus, &QPushButton::clicked,this,&Standard_Widget::input_slot);
     connect(ui->button_minus, &QPushButton::clicked,this,&Standard_Widget::input_slot);
@@ -31,10 +32,10 @@ Standard_Widget::Standard_Widget(QWidget *parent)
     connect(ui->button_clearA, &QPushButton::clicked,this,&Standard_Widget::input_slot);
 
 
-    connect(ui->button_mod, &QPushButton::clicked, this, &Standard_Widget::science_input_slot);
-    connect(ui->button_sqrt, &QPushButton::clicked,this,&Standard_Widget::science_input_slot);
-    connect(ui->button_gcd, &QPushButton::clicked,this,&Standard_Widget::science_input_slot);
-    connect(ui->button_factorial, &QPushButton::clicked,this,&Standard_Widget::science_input_slot);
+    //connect(ui->button_mod, &QPushButton::clicked, this, &Standard_Widget::science_input_slot);
+    connect(ui->button_sqrt, &QPushButton::clicked,this,&Standard_Widget::sqr_factorial_input_slot);
+    //connect(ui->button_gcd, &QPushButton::clicked,this,&Standard_Widget::science_input_slot);
+    connect(ui->button_factorial, &QPushButton::clicked,this,&Standard_Widget::sqr_factorial_input_slot);
 
 
 }
@@ -110,6 +111,9 @@ void Standard_Widget::input_slot()
 
         }else if(button->text()== "CE"){
 
+        }else if(button->text() == "."){
+            temp.append('.');
+            ui->edit_numbers->setText(temp);
         }else{
             //equal was pressed
             //verify equation
@@ -129,29 +133,45 @@ void Standard_Widget::input_slot()
 
 }
 
-void Standard_Widget::science_input_slot()
+//This slot will be implemented when the user presses the square root, factorial option
+void Standard_Widget::sqr_factorial_input_slot()
 {
     QPushButton *button = qobject_cast<QPushButton*>(sender());
     if(button){
         QString temp = ui->edit_numbers->toPlainText();
-        if(button->text()== "√"){
-            //create function for this
+        double dValue = 0.0;
+        int iValue = 0;
+        bool ok;
+        bool doub = Syntax_Sing::get_instance().isDouble(temp);
+        if(doub){
+            dValue = temp.toDouble();
+            if(button->text()== "√"){
+                //create function for this
+                dValue = this->cal->squareRoot(dValue);
+                temp = QString::number(dValue, 'f', 2);
+                ui->edit_numbers->setText(temp);
+            }
+            else{
+                ui->edit_numbers->setText("Integer Values Only");
+            }
 
-            temp.append('s');
-            ui->edit_numbers->setText(temp);
-        }else if(button->text()== "X!"){
-            //Create slot or helper that will calculate the factorial
-            //check syntax, only integer values
-            temp.append('!');
-            ui->edit_numbers->setText(temp);
-        }else if(button->text()== "MOD"){
-            //check syntax, only integer values
-
-            temp.append('%');
-            ui->edit_numbers->setText(temp);
-        }else if(button->text()== "GCD"){
-            temp.append('g');
-            ui->edit_numbers->setText(temp);
+        }else{
+            iValue = temp.toInt(&ok);
+            if(ok){
+                if(button->text()== "√"){
+                    dValue = this->cal->squareRoot(iValue);
+                    temp = QString::number(dValue,'f',2);
+                    ui->edit_numbers->setText(temp);
+                }else if(button->text()== "X!"){
+                    iValue = this->cal->factorial(iValue);
+                    temp = QString::number(iValue);
+                    ui->edit_numbers->setText(temp);
+                }
+            }else{
+                ui->edit_numbers->setText("Syntax Error");
+            }
         }
+        ui->edit_numbers->setAlignment(Qt::AlignRight);
+
     }
 }

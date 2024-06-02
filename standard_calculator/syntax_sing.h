@@ -9,6 +9,8 @@ class Syntax_Sing
 public:
     static Syntax_Sing& get_instance();
     bool par_syntax(const QString &eq);
+
+
     bool isDouble(const QString &eq);
 
     double calulate_total(const QString &eq, Standard_Calculator &cal);

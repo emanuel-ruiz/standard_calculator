@@ -38,7 +38,10 @@ bool Syntax_Sing::par_syntax(const QString &eq)
             }
 
         }
-        previous = ch;
+        if(ch != ' '){
+            previous = ch;
+        }
+
     }
     if(syntax.isEmpty()){
         return true;
@@ -46,8 +49,37 @@ bool Syntax_Sing::par_syntax(const QString &eq)
     return false;
 }
 
+//TODO check the syntax of the special options such as square root, factorial, gcd and mod
+
+//
 bool Syntax_Sing::isDouble(const QString &eq)
 {
+    QChar current;
+    QChar previous = ' ';
+    bool period = false;
+
+    for(QString::const_iterator it = eq.cbegin(); it != eq.cend(); it++){
+        current = *it;
+
+        if(current.isDigit()) {
+            previous = current;
+            continue;
+        }
+        if(current == '.'){
+            if(previous.isDigit() || previous == ' '){
+                period = true;
+                previous = current;
+                continue;
+            }else{
+                return false;
+            }
+        }else{
+            return false;
+        }
+    }
+    if(period){
+        return true;
+    }
     return false;
 }
 
