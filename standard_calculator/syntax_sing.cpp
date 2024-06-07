@@ -54,9 +54,12 @@ bool Syntax_Sing::par_syntax(const QString &eq)
     return false;
 }
 
-//TODO check the syntax of the special options such as square root, factorial, gcd and mod
-
-//
+/**
+ * @brief Determines whether value is a double.
+ * @param eq: QString value to check if it's a double
+ * @return bool returns whether value is a double
+ *
+*/
 bool Syntax_Sing::isDouble(const QString &eq)
 {
     QChar current;

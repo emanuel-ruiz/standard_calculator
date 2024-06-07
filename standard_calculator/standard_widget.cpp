@@ -35,10 +35,13 @@ Standard_Widget::Standard_Widget(QWidget *parent)
 
 
 
+
     //connect(ui->button_mod, &QPushButton::clicked, this, &Standard_Widget::science_input_slot);
     connect(ui->button_sqrt, &QPushButton::clicked,this,&Standard_Widget::sqr_factorial_input_slot);
     //connect(ui->button_gcd, &QPushButton::clicked,this,&Standard_Widget::science_input_slot);
     connect(ui->button_factorial, &QPushButton::clicked,this,&Standard_Widget::sqr_factorial_input_slot);
+
+    connect(ui->button_gcd, &QPushButton::clicked, this, &Standard_Widget::gcd_slot);
 
 
 }
@@ -189,4 +192,32 @@ void Standard_Widget::sqr_factorial_input_slot()
         ui->edit_numbers->setAlignment(Qt::AlignRight);
 
     }
+}
+//
+void Standard_Widget::gcd_slot()
+{
+    QString temp = ui->edit_numbers->toPlainText();
+    QList<QString> values = temp.split(',');
+    for(int i = 0;i < values.size(); i++){
+        QString ch = values.at(i);
+        ch = ch.trimmed();
+        values[i] = ch;
+        if(Syntax_Sing::get_instance().isDouble(ch)){
+            ui->edit_numbers->setText("Integer Values Only");
+        }
+    }
+    bool toInt;
+    bool toInt2;
+    int first = values[0].toInt(&toInt);
+    int second = values[1].toInt(&toInt2);
+    int gcd = this->cal->gcd(first, second);
+    if(toInt && toInt2){
+        ui->edit_numbers->setText(QString::number(gcd));
+        ui->edit_numbers->setAlignment(Qt::AlignRight);
+    }
+}
+
+void Standard_Widget::mod_slot()
+{
+    qInfo() << "Mod Slot";
 }

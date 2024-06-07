@@ -27,6 +27,8 @@ private slots:
     void calculate_equation();
     void input_slot();
     void sqr_factorial_input_slot();
+    void gcd_slot();
+    void mod_slot();
 };
 
 #endif // STANDARD_WIDGET_H
