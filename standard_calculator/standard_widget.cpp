@@ -20,16 +20,19 @@ Standard_Widget::Standard_Widget(QWidget *parent)
     connect(ui->button_8, &QPushButton::clicked,this,&Standard_Widget::input_slot);
     connect(ui->button_9, &QPushButton::clicked,this,&Standard_Widget::input_slot);
     connect(ui->button_period, &QPushButton::clicked,this,&Standard_Widget::input_slot);
+    connect(ui->button_lpara, &QPushButton::clicked, this, &Standard_Widget::input_slot);
+    connect(ui->button_rPara, &QPushButton::clicked, this, &Standard_Widget::input_slot);
+    connect(ui->button_comma, &QPushButton::clicked, this, &Standard_Widget::input_slot);
 
     connect(ui->button_plus, &QPushButton::clicked,this,&Standard_Widget::input_slot);
     connect(ui->button_minus, &QPushButton::clicked,this,&Standard_Widget::input_slot);
     connect(ui->button_div, &QPushButton::clicked,this,&Standard_Widget::input_slot);
-    connect(ui->button_sign, &QPushButton::clicked,this,&Standard_Widget::input_slot);
+
     connect(ui->button_mult, &QPushButton::clicked,this,&Standard_Widget::input_slot);
     connect(ui->button_exp, &QPushButton::clicked,this,&Standard_Widget::input_slot);
     connect(ui->button_equal, &QPushButton::clicked,this,&Standard_Widget::input_slot);
     connect(ui->button_clear, &QPushButton::clicked,this,&Standard_Widget::input_slot);
-    connect(ui->button_clearA, &QPushButton::clicked,this,&Standard_Widget::input_slot);
+
 
 
     //connect(ui->button_mod, &QPushButton::clicked, this, &Standard_Widget::science_input_slot);
@@ -114,7 +117,19 @@ void Standard_Widget::input_slot()
         }else if(button->text() == "."){
             temp.append('.');
             ui->edit_numbers->setText(temp);
-        }else{
+        }else if(button->text() == "("){
+            temp.append('(');
+            ui->edit_numbers->setText(temp);
+        }
+        else if(button ->text() == ")"){
+            temp.append(')');
+            ui->edit_numbers->setText(temp);
+        }
+        else if(button->text() == ","){
+            temp.append(',');
+            ui->edit_numbers->setText(temp);
+        }
+        else{
             //equal was pressed
             //verify equation
             //calculate total
