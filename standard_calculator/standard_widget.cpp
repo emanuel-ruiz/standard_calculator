@@ -23,6 +23,7 @@ Standard_Widget::Standard_Widget(QWidget *parent)
     connect(ui->button_lpara, &QPushButton::clicked, this, &Standard_Widget::input_slot);
     connect(ui->button_rPara, &QPushButton::clicked, this, &Standard_Widget::input_slot);
     connect(ui->button_comma, &QPushButton::clicked, this, &Standard_Widget::input_slot);
+    connect(ui->button_mod, &QPushButton::clicked, this, &Standard_Widget::input_slot);
 
     connect(ui->button_plus, &QPushButton::clicked,this,&Standard_Widget::input_slot);
     connect(ui->button_minus, &QPushButton::clicked,this,&Standard_Widget::input_slot);
@@ -132,6 +133,10 @@ void Standard_Widget::input_slot()
             temp.append(',');
             ui->edit_numbers->setText(temp);
         }
+        else if(button->text() == "MOD"){
+            temp.append('%');
+            ui->edit_numbers->setText(temp);
+        }
         else{
             //equal was pressed
             //verify equation
@@ -198,26 +203,29 @@ void Standard_Widget::gcd_slot()
 {
     QString temp = ui->edit_numbers->toPlainText();
     QList<QString> values = temp.split(',');
-    for(int i = 0;i < values.size(); i++){
-        QString ch = values.at(i);
-        ch = ch.trimmed();
-        values[i] = ch;
-        if(Syntax_Sing::get_instance().isDouble(ch)){
-            ui->edit_numbers->setText("Integer Values Only");
+    if(values.size() == 2){
+        for(int i = 0;i < values.size(); i++){
+            QString ch = values.at(i);
+            ch = ch.trimmed();
+            values[i] = ch;
+            if(Syntax_Sing::get_instance().isDouble(ch)){
+                ui->edit_numbers->setText("Integer Values Only");
+            }
+        }
+
+        bool toInt;
+        bool toInt2;
+        int first = values[0].toInt(&toInt);
+        int second = values[1].toInt(&toInt2);
+        int gcd = this->cal->gcd(first, second);
+        if(toInt && toInt2){
+            ui->edit_numbers->setText(QString::number(gcd));
+            ui->edit_numbers->setAlignment(Qt::AlignRight);
         }
     }
-    bool toInt;
-    bool toInt2;
-    int first = values[0].toInt(&toInt);
-    int second = values[1].toInt(&toInt2);
-    int gcd = this->cal->gcd(first, second);
-    if(toInt && toInt2){
-        ui->edit_numbers->setText(QString::number(gcd));
-        ui->edit_numbers->setAlignment(Qt::AlignRight);
+    else{
+        ui->edit_numbers->setText("Only Two Values Allowed");
     }
+
 }
 
-void Standard_Widget::mod_slot()
-{
-    qInfo() << "Mod Slot";
-}

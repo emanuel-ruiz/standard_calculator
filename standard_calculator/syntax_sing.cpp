@@ -166,6 +166,9 @@ void Syntax_Sing::_calculate(QQueue<QChar>& operators, QQueue<int>& values, Stan
         else if(op == '^'){
             values.head() = cal.exponential(head, next);
         }
+        else if(op == '%'){
+            values.head() = cal.modulus(head, next);
+        }
         else{
             values.enqueue(head);
             operators.enqueue(op);
