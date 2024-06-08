@@ -22,7 +22,6 @@ private:
     Standard_Calculator *cal;
 
 private slots:
-    void calculate_equation();
     void input_slot();
     void sqr_factorial_input_slot();
     void gcd_slot();

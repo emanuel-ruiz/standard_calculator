@@ -49,12 +49,9 @@ Standard_Widget::Standard_Widget(QWidget *parent)
 Standard_Widget::~Standard_Widget()
 {
     delete ui;
+    delete cal;
 }
 
-void Standard_Widget::calculate_equation()
-{
-
-}
 
 /**
     @brief Dependent on sender object will add to the String Equation or calculate Equation.
@@ -205,7 +202,12 @@ void Standard_Widget::sqr_factorial_input_slot()
 
     }
 }
-//
+/**
+    @brief Slot function for GCD function push button
+           Checks for Syntax Prior to calling the GCD Funtion in Calculator.
+
+
+*/
 void Standard_Widget::gcd_slot()
 {
     QString temp = ui->edit_numbers->toPlainText();
