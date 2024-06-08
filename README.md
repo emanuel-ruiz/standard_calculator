@@ -37,4 +37,10 @@ This Calculator was inspired with the calculator that comes standard in Windows 
 
 ## Status
 
+- Only integer calculations are viable.
+
+- Doubles are supported only with the square root operator.
+  
 ## User Guide
+
+- Build Equation using the 
