@@ -8,12 +8,18 @@
 
 ## Table of Contents
 
+- [Project Description](#project-description)
+  - [Functionality](#functionality)
+- [Technologies](#technologies)
+- [Status](#status)
+- [User Guide](#user-guide)
+
 ## Project Description
 
 This project is a desktop Calculator Widget built using the Qt6 Creator Framework written in Qt syntax and C++.
 This Calculator was inspired with the calculator that comes standard in Windows desktops.
 
-### Funtionality
+## Funtionality
 
 - Allows User to build the equation.
 
