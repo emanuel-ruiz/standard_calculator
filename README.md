@@ -8,15 +8,6 @@
 
 ## Table of Contents
 
-- [Standard Calculator](#standard-calculator)
-  - [Desktop Calculator Widget Built with QT6 Creator](#desktop-calculator-widget-built-with-qt6-creator)
-  - [Table of Contents](#table-of-contents)
-  - [Project Description](#project-description)
-    - [Funtionality](#funtionality)
-  - [Technologies](#technologies)
-  - [Status](#status)
-  - [User Guide](#user-guide)
-
 ## Project Description
 
 This project is a desktop Calculator Widget built using the Qt6 Creator Framework written in Qt syntax and C++.
