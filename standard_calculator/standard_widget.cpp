@@ -9,6 +9,7 @@ Standard_Widget::Standard_Widget(QWidget *parent)
     ui->edit_numbers->setAlignment(Qt::AlignRight);
     this->cal = new Standard_Calculator(this);
 
+    //Digit Buttons
     connect(ui->button_0, &QPushButton::clicked,this,&Standard_Widget::input_slot);
     connect(ui->button_1, &QPushButton::clicked,this,&Standard_Widget::input_slot);
     connect(ui->button_2, &QPushButton::clicked,this,&Standard_Widget::input_slot);
@@ -19,29 +20,27 @@ Standard_Widget::Standard_Widget(QWidget *parent)
     connect(ui->button_7, &QPushButton::clicked,this,&Standard_Widget::input_slot);
     connect(ui->button_8, &QPushButton::clicked,this,&Standard_Widget::input_slot);
     connect(ui->button_9, &QPushButton::clicked,this,&Standard_Widget::input_slot);
+
+    //Operator buttons and special characters
     connect(ui->button_period, &QPushButton::clicked,this,&Standard_Widget::input_slot);
     connect(ui->button_lpara, &QPushButton::clicked, this, &Standard_Widget::input_slot);
     connect(ui->button_rPara, &QPushButton::clicked, this, &Standard_Widget::input_slot);
     connect(ui->button_comma, &QPushButton::clicked, this, &Standard_Widget::input_slot);
     connect(ui->button_mod, &QPushButton::clicked, this, &Standard_Widget::input_slot);
-
     connect(ui->button_plus, &QPushButton::clicked,this,&Standard_Widget::input_slot);
     connect(ui->button_minus, &QPushButton::clicked,this,&Standard_Widget::input_slot);
     connect(ui->button_div, &QPushButton::clicked,this,&Standard_Widget::input_slot);
-
     connect(ui->button_mult, &QPushButton::clicked,this,&Standard_Widget::input_slot);
     connect(ui->button_exp, &QPushButton::clicked,this,&Standard_Widget::input_slot);
     connect(ui->button_equal, &QPushButton::clicked,this,&Standard_Widget::input_slot);
     connect(ui->button_clear, &QPushButton::clicked,this,&Standard_Widget::input_slot);
+    connect(ui->button_back, &QPushButton::clicked, this, &Standard_Widget::input_slot);
 
 
 
-
-    //connect(ui->button_mod, &QPushButton::clicked, this, &Standard_Widget::science_input_slot);
+    //Square Root, Factorial and GCD buttons
     connect(ui->button_sqrt, &QPushButton::clicked,this,&Standard_Widget::sqr_factorial_input_slot);
-    //connect(ui->button_gcd, &QPushButton::clicked,this,&Standard_Widget::science_input_slot);
     connect(ui->button_factorial, &QPushButton::clicked,this,&Standard_Widget::sqr_factorial_input_slot);
-
     connect(ui->button_gcd, &QPushButton::clicked, this, &Standard_Widget::gcd_slot);
 
 
@@ -137,6 +136,10 @@ void Standard_Widget::input_slot()
             temp.append('%');
             ui->edit_numbers->setText(temp);
         }
+        else if(button->text() == "Backspace"){
+            temp.chop(1);
+            ui->edit_numbers->setText(temp);
+        }
         else{
             //equal was pressed
             //verify equation
@@ -157,6 +160,10 @@ void Standard_Widget::input_slot()
 }
 
 //This slot will be implemented when the user presses the square root, factorial option
+/**
+ *@brief Slot for the square-root and factorial inputs
+ *
+*/
 void Standard_Widget::sqr_factorial_input_slot()
 {
     QPushButton *button = qobject_cast<QPushButton*>(sender());

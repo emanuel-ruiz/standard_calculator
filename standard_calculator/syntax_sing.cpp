@@ -15,7 +15,6 @@ Syntax_Sing &Syntax_Sing::get_instance()
     @brief Checks Syntax of the equation
            Checks the paranthesis syntax
            Checks the that operators are properly used
-           Checks that the equation only contains valid characters
     @param eq the QString equation
     @return boolean whether the function is valid
 */
@@ -40,6 +39,12 @@ bool Syntax_Sing::par_syntax(const QString &eq)
         else if(ch == '+' || ch == '-' || ch == '*' || ch =='/' || ch == '^' || ch == '%'){
             if(previous == '('){
                 return false;
+            }
+            if(ch == '^')
+            {
+                if(!previous.isDigit()){
+                    return false;
+                }
             }
 
         }

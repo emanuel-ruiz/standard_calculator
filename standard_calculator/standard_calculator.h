@@ -18,7 +18,7 @@ class Standard_Calculator : public QObject
 {
     Q_OBJECT
 public:
-    explicit Standard_Calculator(QObject *parent = nullptr);
+    explicit Standard_Calculator(QObject *parent = nullptr): QObject{parent}{};
 
     template<typename T>
     T addition(const T &a, const T &b){

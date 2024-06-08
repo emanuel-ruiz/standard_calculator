@@ -20,8 +20,6 @@ public:
 private:
     Ui::Standard_Widget *ui;
     Standard_Calculator *cal;
-    QString equation="";
-    QString tempString = "";
 
 private slots:
     void calculate_equation();

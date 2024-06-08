@@ -20,7 +20,6 @@ set(PROJECT_SOURCES
         standard_widget.cpp
         standard_widget.ui
         standard_calculator.h
-        standard_calculator.cpp
         syntax_sing.h
         syntax_sing.cpp
 
@@ -32,7 +31,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         ${PROJECT_SOURCES}
         mainwindow.h mainwindow.cpp
 
-        standard_calculator.h standard_calculator.cpp
+        standard_calculator.h
         standard_widget.h standard_widget.cpp standard_widget.ui
         syntax_sing.h syntax_sing.cpp
     )
