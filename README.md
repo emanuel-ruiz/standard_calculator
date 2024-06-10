@@ -43,4 +43,4 @@ This Calculator was inspired with the calculator that comes standard in Windows 
   
 ## User Guide
 
-- Build Equation using the 
+- Build Equation using the built in buttons. 
