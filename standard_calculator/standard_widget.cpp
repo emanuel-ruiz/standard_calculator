@@ -1,5 +1,6 @@
 #include "standard_widget.h"
 #include "ui_standard_widget.h"
+#include "syntax_sing.h"
 
 Standard_Widget::Standard_Widget(QWidget *parent)
     : QWidget(parent)
@@ -54,7 +55,7 @@ Standard_Widget::~Standard_Widget()
 
 
 /**
-    @brief Dependent on sender object will add to the String Equation or calculate Equation.
+    @brief Dependent on sender object, will add to the String Equation or calculate Equation.
 
 */
 void Standard_Widget::input_slot()
@@ -138,10 +139,7 @@ void Standard_Widget::input_slot()
             ui->edit_numbers->setText(temp);
         }
         else{
-            //equal was pressed
-            //verify equation
-            //calculate total
-            //display total
+            //equal button is pressed.
             if(Syntax_Sing::get_instance().par_syntax(temp)){
                 int total = Syntax_Sing::get_instance().calulate_total(temp, *cal);
                 ui->edit_numbers->setText(QString::number(total));

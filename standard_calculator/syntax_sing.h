@@ -3,6 +3,10 @@
 #include <QString>
 #include "standard_calculator.h"
 
+/**
+* @abstract Helper Singleton class that will check for equation syntax.
+*           and calculate the equations.
+*/
 class Syntax_Sing
 {
 
@@ -16,7 +20,7 @@ public:
     double calulate_total(const QString &eq, Standard_Calculator &cal);
     void _calculate(QQueue<QChar>& operators, QQueue<int>& values, Standard_Calculator &cal);
 
-    //Delete cpy constructor and assignment operator
+    //Delete copy constructor and assignment operator
     Syntax_Sing(const Syntax_Sing&) = delete;
     Syntax_Sing operator=(const Syntax_Sing&) = delete;
 

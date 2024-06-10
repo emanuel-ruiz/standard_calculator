@@ -5,14 +5,10 @@
 #include <QDebug>
 
 
-/*Standard Calculator that will implement
-* Addition
-* Subtraction
-* Multiplication
-* Division
-* Modulus
-* Exponents
-* Square Root
+/**
+* @ abstract Standard Calculator that will implement
+* Standard operators including factorial, exponents, square root
+* along with calculating the Greatest Common Denominator between two integer values;
 */
 class Standard_Calculator : public QObject
 {
