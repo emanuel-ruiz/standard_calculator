@@ -12,7 +12,6 @@
   - [Functionality](#functionality)
 - [Technologies](#technologies)
 - [Status](#status)
-- [User Guide](#user-guide)
 
 ## Project Description
 
@@ -39,9 +38,8 @@ This Calculator was inspired with the calculator that comes standard in Windows 
 
 ## Status
 
-- Only integer calculations are viable.
-
-- Doubles are supported only with the square root operator.
+- Currently documenting bugs.
+- Pending double precision calcuations
 
   
 
