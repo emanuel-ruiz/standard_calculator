@@ -1,10 +1,17 @@
 #ifndef STANDARD_WIDGET_H
 #define STANDARD_WIDGET_H
 
-#include "syntax_sing.h"
+
+
+
+
 #include "standard_calculator.h"
 #include <QWidget>
 
+/**
+* @abstract Widget that will represent the standard calculator
+* interface.
+*/
 namespace Ui {
 class Standard_Widget;
 }
