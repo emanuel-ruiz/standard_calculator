@@ -21,9 +21,9 @@ This Calculator was inspired with the calculator that comes standard in Windows 
 
 ## Funtionality
 
-- Allows User to build the equation.
+- Allows User to build the equation prior to calculating the equation, allowing the user to make adjustments and fix errors. 
   
-![Calculator Demo](calculator_back.mp4)
+![Calculator Demo](https://github.com/emanuel-ruiz/standard_calculator/blob/main/cal_demo.gif)
 
 - Standard operations of addition, subtraction, division, multiplication included
 
