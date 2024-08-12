@@ -22,6 +22,8 @@ This Calculator was inspired with the calculator that comes standard in Windows 
 ## Funtionality
 
 - Allows User to build the equation.
+  
+![Calculator Demo](calculator_back.mp4)
 
 - Standard operations of addition, subtraction, division, multiplication included
 
@@ -40,5 +42,6 @@ This Calculator was inspired with the calculator that comes standard in Windows 
 - Only integer calculations are viable.
 
 - Doubles are supported only with the square root operator.
+
   
 
