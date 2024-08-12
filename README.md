@@ -41,6 +41,4 @@ This Calculator was inspired with the calculator that comes standard in Windows 
 
 - Doubles are supported only with the square root operator.
   
-## User Guide
 
-- Build Equation using the built in buttons. 
