@@ -18,7 +18,7 @@ public:
     bool isDouble(const QString &eq);
 
     double calulate_total(const QString &eq, Standard_Calculator &cal);
-    void _calculate(QQueue<QChar>& operators, QQueue<int>& values, Standard_Calculator &cal);
+    void _calculate(QQueue<QChar>& operators, QQueue<double>& values, Standard_Calculator &cal);
 
     //Delete copy constructor and assignment operator
     Syntax_Sing(const Syntax_Sing&) = delete;

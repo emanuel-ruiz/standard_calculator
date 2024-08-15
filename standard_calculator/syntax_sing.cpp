@@ -100,7 +100,7 @@ bool Syntax_Sing::isDouble(const QString &eq)
 double Syntax_Sing::calulate_total(const QString &eq, Standard_Calculator &cal)
 {
     QQueue<QChar> operators;
-    QQueue<int> values;
+    QQueue<double> values;
 
     QString current = "";
     //iterate through list
@@ -111,11 +111,22 @@ double Syntax_Sing::calulate_total(const QString &eq, Standard_Calculator &cal)
         if(ch.isDigit()){
             current.append(ch);
             qInfo() << current;
-        }else{
+        }
+        else if(ch == '.'){
+            current.append('.');
+        }
+        else{
             //if ch is anything besides a digit, then the running value is complete
             if(!current.isEmpty()){
-                values.append(current.toInt());
-                current.clear();
+                if(current.length() > 1){
+                    values.append(current.toDouble());
+                    current.clear();
+                }
+                else{
+                    values.append(current.toInt());
+                    current.clear();
+                }
+
             }
             if(ch == ' '){
                 continue;
@@ -146,12 +157,12 @@ double Syntax_Sing::calulate_total(const QString &eq, Standard_Calculator &cal)
     return values.dequeue();
 }
 //GCD and Factorial will be calculated seperately
-void Syntax_Sing::_calculate(QQueue<QChar>& operators, QQueue<int>& values, Standard_Calculator &cal)
+void Syntax_Sing::_calculate(QQueue<QChar>& operators, QQueue<double>& values, Standard_Calculator &cal)
 {
 
     //TODO FIND A Way to get out of loop
-    int head = 0;
-    int next = 0;
+    double head = 0;
+    double next = 0;
     QChar op;
     //we do a for loop with the length of the operators
     int length = operators.size();

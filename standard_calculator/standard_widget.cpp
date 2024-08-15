@@ -141,7 +141,7 @@ void Standard_Widget::input_slot()
         else{
             //equal button is pressed.
             if(Syntax_Sing::get_instance().par_syntax(temp)){
-                int total = Syntax_Sing::get_instance().calulate_total(temp, *cal);
+                double total = Syntax_Sing::get_instance().calulate_total(temp, *cal);
                 ui->edit_numbers->setText(QString::number(total));
             }else{
                 ui->edit_numbers->setText("Syntax Error");
