@@ -143,8 +143,15 @@ double Syntax_Sing::calulate_total(const QString &eq, Standard_Calculator &cal)
     }
     //Equation ends with a digit
     if(!current.isEmpty()){
-        values.append(current.toInt());
-        current.clear();
+        if(current.length() > 1){
+            values.append(current.toDouble());
+            current.clear();
+        }
+        else{
+            values.append(current.toInt());
+            current.clear();
+        }
+
     }
 
     //Equation does not end with a closing paranthesis
