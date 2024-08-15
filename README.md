@@ -39,7 +39,10 @@ This Calculator was inspired with the calculator that comes standard in Windows 
 ## Status
 
 - Currently documenting bugs.
-- Pending double precision calcuations
+- Double Precision added
+- Bugs
+  - error when calculating between doubles
+  - 
 
   
 
