@@ -45,11 +45,11 @@ public:
         }
     }
 
-    int exponential(const int &a, const int &b ){
+    double exponential(const double &a, const double &b ){
         if(b == 0){
             return 1;
         }
-        int c = a;
+        double c = a;
         for(int i = 0; i < b-1; i++ ){
             c = c*a;
         }

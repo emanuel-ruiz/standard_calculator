@@ -12,8 +12,6 @@ int main(int argc, char *argv[])
     w.setWindowTitle("Standard Calculator");
     w.show();
     Standard_Calculator cal;
-    // Standard_Calculator *cal = new Standard_Calculator(&w);
-    int answer = Syntax_Sing::get_instance().calulate_total("6^1", cal);
-    qInfo() << answer;
+
     return a.exec();
 }

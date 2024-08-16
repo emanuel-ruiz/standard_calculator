@@ -96,7 +96,6 @@ bool Syntax_Sing::isDouble(const QString &eq)
     return false;
 }
 
-//CURRENT STATE IS ONLY FOR INTEGERS
 double Syntax_Sing::calulate_total(const QString &eq, Standard_Calculator &cal)
 {
     QQueue<QChar> operators;
