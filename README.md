@@ -42,7 +42,7 @@ This Calculator was inspired with the calculator that comes standard in Windows 
 - Double Precision added
 - Bugs
   - error when calculating between doubles
-  - 
+  - add negative value results
 
   
 
